@@ -1,9 +1,14 @@
-<button routerLink="/">Retourner aux films</button>
+<div class="container">
+  <div class="card">
+    <button routerLink="/"> <img class="icon" src="assets/arrow_back.svg" /> Retourner à la liste de films</button>
 
-<button *ngIf="film" [routerLink]="['/edit', film.id ]">Modifier un film</button>
+    <button class="primary-btn" *ngIf="film" [routerLink]="['/edit', film.id ]">Modifier ce film</button>
 
-<div *ngIf="film">
-  <div>{{ film.title }}</div>
-  <div>{{ film.synopsis }}</div>
-  <app-rating [rating]="film.rating"></app-rating>
+    <div *ngIf="film">
+      <div class="head">
+        <h1>{{ film.title }}</h1> <app-rating [rating]="film.rating"></app-rating>
+      </div>
+      <div>{{ film.synopsis }}</div>
+    </div>
+  </div>
 </div>
