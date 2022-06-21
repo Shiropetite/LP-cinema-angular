@@ -19,3 +19,19 @@ body {
 .items-center {
   align-items: center;
 }
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  border-radius: 30px;
+  padding: 40px 60px;
+  width: 100%;
+  margin: 30px 20%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}

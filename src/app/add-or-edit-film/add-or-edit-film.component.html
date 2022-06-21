@@ -6,20 +6,18 @@
 
     <form [formGroup]="filmForm" (ngSubmit)="submit()">
 
-      <div class="row items-center">
-        <div class="column">
-          <div>
-            <div class="label">Titre</div>
-            <input type="text" formControlName="title" />
-            <div class="error" *ngIf="haveSubmitOnce && filmForm.controls.title.status == 'INVALID'">
-              Ce champ est obligatoire
-            </div>
+      <div class="column">
+        <div>
+          <div class="label">Titre</div>
+          <input type="text" formControlName="title" />
+          <div class="error" *ngIf="haveSubmitOnce && filmForm.controls.title.status == 'INVALID'">
+            Ce champ est obligatoire
           </div>
+        </div>
 
-          <div>
-            <div class="label">Note</div>
-            <app-edit-rating [rating]="filmForm.controls.rating.value" (onUpdate)="updateRating($event)"></app-edit-rating>
-          </div>
+        <div>
+          <div class="label">Note</div>
+          <app-edit-rating [rating]="filmForm.controls.rating.value" (onUpdate)="updateRating($event)"></app-edit-rating>
         </div>
 
         <div>

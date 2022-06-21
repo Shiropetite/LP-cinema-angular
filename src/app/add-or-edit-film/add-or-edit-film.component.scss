@@ -1,16 +1,4 @@
-.container {
-  margin-top: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.card {
-  border-radius: 30px;
-  padding: 40px 30px;
-  width: 800px;
-  background-color: white;
-}
 
 form {
   display: flex;
@@ -31,7 +19,7 @@ textarea {
   padding: 10px 20px;
   border-radius: 20px;
   border: solid 2px black;
-  width: 240px;
+  width: 520px;
 
   &:hover {
     background-color: #f2f2f2;
@@ -96,6 +84,7 @@ h2 {
 }
 
 .back {
+  align-self: flex-start;
   transition: all linear 0.2s;
   background-color: white;
   font-weight: 600;
