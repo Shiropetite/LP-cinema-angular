@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="card">
+    <button class="back" routerLink="/" type="button"> <img class="icon" src="assets/arrow_back.svg" /> Retour</button>
+
+    <h2>{{ edit ? 'Modifier un film' : 'Ajouter un film' }}</h2>
+
+    <form [formGroup]="filmForm" (ngSubmit)="submit()">
+
+      <div class="row items-center">
+        <div class="column">
+          <div>
+            <div class="label">Titre</div>
+            <input type="text" formControlName="title" />
+            <div class="error" *ngIf="haveSubmitOnce && filmForm.controls.title.status == 'INVALID'">
+              Ce champ est obligatoire
+            </div>
+          </div>
+
+          <div>
+            <div class="label">Note</div>
+            <app-edit-rating [rating]="filmForm.controls.rating.value" (onUpdate)="updateRating($event)"></app-edit-rating>
+          </div>
+        </div>
+
+        <div>
+          <div class="label">Synopsis</div>
+          <textarea rows="8" formControlName="synopsis" ></textarea>
+        </div>
+      </div>
+
+      <button class="submit" type="submit">{{ edit ? 'Modifier' : 'Ajouter' }}</button>
+
+    </form>
+  </div>
+</div>

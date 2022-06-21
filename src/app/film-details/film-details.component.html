@@ -1,0 +1,9 @@
+<button routerLink="/">Retourner aux films</button>
+
+<button *ngIf="film" [routerLink]="['/edit', film.id ]">Modifier un film</button>
+
+<div *ngIf="film">
+  <div>{{ film.title }}</div>
+  <div>{{ film.synopsis }}</div>
+  <app-rating [rating]="film.rating"></app-rating>
+</div>

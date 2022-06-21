@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="card">
+    <h1>Ma liste de films</h1>
+    <button routerLink="/edit">Ajouter un film</button>
+
+    <div *ngFor="let film of films">
+      <a class="link" [routerLink]="['/films', film.id ]" >
+        <h2> {{ film.title }} </h2>
+        <app-rating [rating]="film.rating"></app-rating>
+      </a>
+    </div>
+  </div>
+</div>

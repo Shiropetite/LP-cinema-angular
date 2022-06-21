@@ -1,0 +1,9 @@
+<div>
+  <button class="star" *ngFor="let star of [1,2,3,4,5]" (click)="updateRating(star)" type="button">
+    <img class="icon" [src]="rating >= star ? 'assets/star.svg' : 'assets/star-empty.svg'" />
+  </button>
+
+  <div>
+    <button type="button" (click)="updateRating(0)">Réinitialiser la note</button>
+  </div>
+</div>
