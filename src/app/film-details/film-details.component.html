@@ -2,7 +2,10 @@
   <div class="card">
     <button routerLink="/"> <img class="icon" src="assets/arrow_back.svg" /> Retourner à la liste de films</button>
 
-    <button class="primary-btn" *ngIf="film" [routerLink]="['/edit', film.id ]">Modifier ce film</button>
+    <div class="row self-end">
+      <button class="primary-btn" *ngIf="film" [routerLink]="['/edit', film.id ]">Modifier ce film</button>
+      <button class="secondary-btn" (click)="deleteFilm()" *ngIf="film">Supprimer ce film</button>
+    </div>
 
     <div *ngIf="film">
       <div class="head">

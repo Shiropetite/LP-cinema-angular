@@ -1,0 +1,22 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "Toy story 4",
+      "synopsis": "Woody a toujours privilégié la joie et le bien-être de ses jeunes propriétaires – Andy puis Bonnie – et de ses compagnons, n’hésitant pas à prendre tous les risques pour eux, aussi inconsidérés soient-ils. L’arrivée de Fourchette un nouveau jouet qui ne veut pas en être un dans la chambre de Bonnie met toute la petite bande en émoi. C’est le début d’une grande aventure et d’un extraordinaire voyage pour Woody et ses amis. Le cowboy va découvrir à quel point le monde peut être vaste pour un jouet…",
+      "rating": 2
+    },
+    {
+      "id": 2,
+      "title": "Alerte rouge",
+      "synopsis": "Les aventures de Meilin Lee, une jeune adolescente de 13 ans, pleine d’assurance, mais tiraillée entre son image de petite fille modèle aux yeux de sa mère hyper protectrice et le chaos de l’adolescence. Et comme si tous les changements qui s’opèrent en elle ne suffisaient pas, chaque fois qu’elle est débordée par ses émotions - ce qui, pour une ado, arrive quasiment tout le temps - elle se transforme en panda roux géant !",
+      "rating": 0
+    },
+    {
+      "title": "Toy story 3",
+      "synopsis": "Les créateurs des très populaires films Toy Story ouvrent à nouveau le coffre à jouets et invitent les spectateurs à retrouver le monde délicieusement magique de Woody et Buzz au moment où Andy s'apprête à partir pour l'université. Délaissée, la plus célèbre bande de jouets se retrouve... à la crèche ! Les bambins déchaînés et leurs petits doigts capables de tout arracher sont une vraie menace pour nos amis ! Il devient urgent d'échafauder un plan pour leur échapper au plus vite. Quelques nouveaux venus vont se joindre à la Grande évasion, dont l'éternel séducteur et célibataire Ken, compagnon de Barbie, un hérisson comédien nommé Larosse, et un ours rose parfumé à la fraise appelé Lotso.",
+      "rating": 4,
+      "id": 3
+    }
+  ]
+}

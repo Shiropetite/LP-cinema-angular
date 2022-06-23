@@ -26,11 +26,10 @@ export class AddOrEditFilmComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if(id) {
-      const film = this.filmService.getFilm(id);
-      if(film) {
+      this.filmService.getFilm(Number.parseInt(id)).subscribe((film: Film) => {
         this.filmForm.setValue({ title: film.title, synopsis: film.synopsis, rating: film.rating });
         this.edit = true;
-      }
+      });
     }
   }
 
@@ -44,16 +43,18 @@ export class AddOrEditFilmComponent implements OnInit {
       const filmId = this.route.snapshot.paramMap.get('id');
       if(filmId) {
         this.filmService.updateFilm({
-          id: filmId,
+          id: Number.parseInt(filmId),
           title: this.filmForm.value.title ?? '',
           synopsis: this.filmForm.value.synopsis,
           rating: this.filmForm.value.rating
-        });
-        this.router.navigate([`/films/${filmId}`]);
+        }).subscribe(() => {
+          this.router.navigate([`/films/${filmId}`]);
+        })
       }
       else {
-        this.filmService.addFilm(this.filmForm.value as Film);
-        this.router.navigate(['/']);
+        this.filmService.addFilm(this.filmForm.value as Film).subscribe(() => {
+          this.router.navigate(['/']);
+        });
       }
 
     }
