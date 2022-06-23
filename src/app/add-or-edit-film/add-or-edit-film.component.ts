@@ -13,7 +13,9 @@ import { FilmService } from './../service/film.service';
 export class AddOrEditFilmComponent implements OnInit {
   haveSubmitOnce: boolean = false;
   edit: boolean = false;
+
   filmForm = new FormGroup({
+    id: new FormControl(),
     title: new FormControl('', [
       Validators.required
     ]),
@@ -30,7 +32,7 @@ export class AddOrEditFilmComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if(id) {
       this.filmService.getFilm(Number.parseInt(id)).subscribe((film: Film) => {
-        this.filmForm.setValue({ title: film.title, synopsis: film.synopsis, releaseDate: film.releaseDate, rating: film.rating });
+        this.filmForm.setValue(film);
         this.edit = true;
       });
     }
@@ -45,13 +47,7 @@ export class AddOrEditFilmComponent implements OnInit {
     if(this.filmForm.status === 'VALID') {
       const filmId = this.route.snapshot.paramMap.get('id');
       if(filmId) {
-        this.filmService.updateFilm({
-          id: Number.parseInt(filmId),
-          title: this.filmForm.value.title ?? '',
-          releaseDate: this.filmForm.value.releaseDate ?? '',
-          synopsis: this.filmForm.value.synopsis,
-          rating: this.filmForm.value.rating
-        }).subscribe(() => {
+        this.filmService.updateFilm(this.filmForm.value as Film).subscribe(() => {
           this.router.navigate([`/films/${filmId}`]);
         })
       }

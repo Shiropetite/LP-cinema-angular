@@ -1,6 +1,8 @@
 <div class="container">
   <div class="card">
-    <button routerLink="/"> <img class="icon" src="assets/arrow_back.svg" /> Retourner à la liste de films</button>
+    <button class="go-back" routerLink="/">
+      <img src="assets/arrow_back.svg" /> Retourner à la liste de films
+    </button>
 
     <div class="row self-end">
       <button class="primary-btn" *ngIf="film" [routerLink]="['/edit', film.id ]">Modifier ce film</button>

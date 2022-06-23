@@ -1,8 +1,10 @@
 <div class="container">
   <div class="card">
-    <button class="back" routerLink="/" type="button"> <img class="icon" src="assets/arrow_back.svg" /> Retour</button>
+    <button class="go-back" [routerLink]="edit ? '/films/' + filmForm.controls.id.value : '/'" type="button">
+      <img src="assets/arrow_back.svg" /> Retour
+    </button>
 
-    <h2>{{ edit ? 'Modifier un film' : 'Ajouter un film' }}</h2>
+    <h1 class="text-center">{{ edit ? 'Modifier un film' : 'Ajouter un film' }}</h1>
 
     <form [formGroup]="filmForm" (ngSubmit)="submit()">
 
