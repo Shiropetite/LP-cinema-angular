@@ -17,6 +17,9 @@ export class AddOrEditFilmComponent implements OnInit {
     title: new FormControl('', [
       Validators.required
     ]),
+    releaseDate: new FormControl('', [
+      Validators.required
+    ]),
     synopsis: new FormControl(),
     rating: new FormControl()
   })
@@ -27,7 +30,7 @@ export class AddOrEditFilmComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if(id) {
       this.filmService.getFilm(Number.parseInt(id)).subscribe((film: Film) => {
-        this.filmForm.setValue({ title: film.title, synopsis: film.synopsis, rating: film.rating });
+        this.filmForm.setValue({ title: film.title, synopsis: film.synopsis, releaseDate: film.releaseDate, rating: film.rating });
         this.edit = true;
       });
     }
@@ -45,6 +48,7 @@ export class AddOrEditFilmComponent implements OnInit {
         this.filmService.updateFilm({
           id: Number.parseInt(filmId),
           title: this.filmForm.value.title ?? '',
+          releaseDate: this.filmForm.value.releaseDate ?? '',
           synopsis: this.filmForm.value.synopsis,
           rating: this.filmForm.value.rating
         }).subscribe(() => {

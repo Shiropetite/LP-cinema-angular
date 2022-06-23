@@ -7,11 +7,21 @@
     <form [formGroup]="filmForm" (ngSubmit)="submit()">
 
       <div class="column">
-        <div>
-          <div class="label">Titre</div>
-          <input type="text" formControlName="title" />
-          <div class="error" *ngIf="haveSubmitOnce && filmForm.controls.title.status == 'INVALID'">
-            Ce champ est obligatoire
+        <div class="row">
+          <div>
+            <div class="label">Titre</div>
+            <input type="text" formControlName="title" />
+            <div class="error" *ngIf="haveSubmitOnce && filmForm.controls.title.status == 'INVALID'">
+              Ce champ est obligatoire
+            </div>
+          </div>
+
+          <div>
+            <div class="label">Date de sortie</div>
+            <input type="date" formControlName="releaseDate" />
+            <div class="error" *ngIf="haveSubmitOnce && filmForm.controls.releaseDate.status == 'INVALID'">
+              Ce champ est obligatoire
+            </div>
           </div>
         </div>
 

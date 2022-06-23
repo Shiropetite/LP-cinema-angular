@@ -34,4 +34,12 @@ export class FilmDetailsComponent implements OnInit {
     }
   }
 
+  formatDate(date: string): string {
+    const months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+    const year = date.split('-')[0];
+    const month = months[Number.parseInt(date.split('-')[1])]
+    const day = date.split('-')[2];
+    return `${day} ${month} ${year}`;
+  }
+
 }

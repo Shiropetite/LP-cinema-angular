@@ -1,6 +1,6 @@
 <div *ngIf="rating; else noRate">
-  <span *ngFor="let star of [0,1,2,3,4]">
-    <img class="icon" [src]="rating > star ? 'assets/star.svg' : 'assets/star-empty.svg'" />
+  <span *ngFor="let star of [1,2,3,4,5]">
+    <img class="icon" [src]="rating >= star ? 'assets/star.svg' : 'assets/star-empty.svg'" />
   </span>
 </div>
 <ng-template #noRate>Pas de notes displonibles</ng-template>
