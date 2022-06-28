@@ -3,7 +3,7 @@
     <h1>Ma liste de films</h1>
     <button routerLink="/edit">Ajouter un film</button>
 
-    <div *ngFor="let film of films">
+    <div *ngFor="let film of (films | async)">
       <a class="link" [routerLink]="['/films', film.id ]" >
         <h2> {{ film.title }} </h2>
         <app-rating [rating]="film.rating"></app-rating>

@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
 //#region Components
@@ -13,6 +15,11 @@ import { FilmDetailsComponent } from './film-details/film-details.component';
 import { MyFilmsComponent } from './my-films/my-films.component';
 import { RatingComponent } from './rating/rating.component';
 import { EditRatingComponent } from './edit-rating/edit-rating.component';
+//#endregion
+
+//#region Store
+import { filmReducer } from '@shared/store/film.reducer';
+import { FilmEffects } from '@shared/store/film.effect';
 //#endregion
 
 @NgModule({
@@ -29,6 +36,8 @@ import { EditRatingComponent } from './edit-rating/edit-rating.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    StoreModule.forRoot({ films: filmReducer }),
+    EffectsModule.forRoot([FilmEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent]

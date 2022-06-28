@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Film } from '../model/Film';
-import { FilmService } from './../service/film.service';
+import { Film } from '@shared/model/Film';
+import { FilmService } from '@shared/service/film.service';
 
 @Component({
   selector: 'app-add-or-edit-film',

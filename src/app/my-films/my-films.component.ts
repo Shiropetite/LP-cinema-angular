@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Film } from '../model/Film';
-import { FilmService } from './../service/film.service';
+import { Store } from '@ngrx/store';
+import { Film } from '@shared/model/Film';
+import { Observable } from 'rxjs';
+import { selectFilms } from './../@shared/store/film.selectors';
 
 @Component({
   selector: 'app-my-films',
@@ -9,12 +11,12 @@ import { FilmService } from './../service/film.service';
 })
 export class MyFilmsComponent implements OnInit {
 
-  films: Film[] = []
+  films: Observable<Film[]> = new Observable();
 
-  constructor(private filmService: FilmService) { }
+  constructor(private store: Store<{ movies: Film[] }>) { }
 
   ngOnInit(): void {
-    this.filmService.getAllFilm().subscribe((films: Film[]) => { this.films = films });
+    this.films = this.store.select(selectFilms);
   }
 
 }

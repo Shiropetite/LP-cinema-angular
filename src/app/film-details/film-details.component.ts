@@ -3,10 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 // Models
-import { Film } from '../model/Film';
+import { Film } from '@shared/model/Film';
 
 // Service
-import { FilmService } from './../service/film.service';
+import { FilmService } from '@shared/service/film.service';
 
 @Component({
   selector: 'app-film-details',
