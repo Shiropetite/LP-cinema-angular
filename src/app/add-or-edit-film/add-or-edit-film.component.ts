@@ -28,7 +28,7 @@ export class AddOrEditFilmComponent implements OnInit {
     rating: new FormControl()
   })
 
-  constructor(private store: Store<{ movies: Film[] }>, private filmService: FilmService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private store: Store, private filmService: FilmService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');

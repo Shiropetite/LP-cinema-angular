@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { Film } from '@shared/model/Film';
-import { loadFilmsSuccess, addFilmSuccess, updateFilmSuccess } from './film.actions';
+import { loadFilmsSuccess, addFilmSuccess, updateFilmSuccess, deleteFilmSuccess } from './film.actions';
 
 const initialState: Film[] = [];
 
@@ -16,5 +16,6 @@ export const filmReducer = createReducer(
     }
 
     return filmList;
-  })
+  }),
+  on(deleteFilmSuccess, (state, { id }) => state.filter(film => film.id !== id))
 );

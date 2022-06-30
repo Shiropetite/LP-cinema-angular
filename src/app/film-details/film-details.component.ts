@@ -1,12 +1,14 @@
 // Angular
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 
 // Models
 import { Film } from '@shared/model/Film';
 
 // Service
 import { FilmService } from '@shared/service/film.service';
+import { deleteFilm } from '@shared/store/film.actions';
 
 @Component({
   selector: 'app-film-details',
@@ -17,7 +19,7 @@ export class FilmDetailsComponent implements OnInit {
 
   film?: Film
 
-  constructor(private filmService: FilmService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private store: Store, private filmService: FilmService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -28,9 +30,7 @@ export class FilmDetailsComponent implements OnInit {
 
   deleteFilm(): void {
     if(this.film) {
-      this.filmService.deleteFilm(this.film.id).subscribe(() => {
-        this.router.navigate(['/']);
-      })
+      this.store.dispatch(deleteFilm({ id: this.film.id }));
     }
   }
 
