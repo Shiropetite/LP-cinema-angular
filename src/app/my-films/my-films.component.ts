@@ -13,7 +13,7 @@ export class MyFilmsComponent implements OnInit {
 
   films: Observable<Film[]> = new Observable();
 
-  constructor(private store: Store<{ movies: Film[] }>) { }
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
     this.films = this.store.select(selectFilms);

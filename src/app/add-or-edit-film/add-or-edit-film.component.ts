@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 
 import { Film } from '@shared/model/Film';
 import { FilmService } from '@shared/service/film.service';
+import { addFilm } from '@shared/store/film.actions';
 
 @Component({
   selector: 'app-add-or-edit-film',
@@ -26,7 +28,7 @@ export class AddOrEditFilmComponent implements OnInit {
     rating: new FormControl()
   })
 
-  constructor(private filmService: FilmService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private store: Store<{ movies: Film[] }>, private filmService: FilmService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -52,9 +54,7 @@ export class AddOrEditFilmComponent implements OnInit {
         })
       }
       else {
-        this.filmService.addFilm(this.filmForm.value as Film).subscribe(() => {
-          this.router.navigate(['/']);
-        });
+        this.store.dispatch(addFilm({ film: this.filmForm.value as Film }));
       }
 
     }
