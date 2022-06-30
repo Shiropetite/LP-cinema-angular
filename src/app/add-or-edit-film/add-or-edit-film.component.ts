@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 
 import { Film } from '@shared/model/Film';
 import { FilmService } from '@shared/service/film.service';
-import { addFilm } from '@shared/store/film.actions';
+import { addFilm, updateFilm } from '@shared/store/film.actions';
 
 @Component({
   selector: 'app-add-or-edit-film',
@@ -49,9 +49,7 @@ export class AddOrEditFilmComponent implements OnInit {
     if(this.filmForm.status === 'VALID') {
       const filmId = this.route.snapshot.paramMap.get('id');
       if(filmId) {
-        this.filmService.updateFilm(this.filmForm.value as Film).subscribe(() => {
-          this.router.navigate([`/films/${filmId}`]);
-        })
+        this.store.dispatch(updateFilm({ film: this.filmForm.value as Film }));
       }
       else {
         this.store.dispatch(addFilm({ film: this.filmForm.value as Film }));

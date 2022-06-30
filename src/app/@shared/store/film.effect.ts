@@ -5,7 +5,7 @@ import { map, switchMap, mergeMap, tap } from 'rxjs/operators';
 
 import { FilmService } from '@shared/service/film.service';
 import { Film } from '@shared/model/Film';
-import { loadFilms, loadFilmsSuccess, addFilm, addFilmSuccess } from './film.actions';
+import { loadFilms, loadFilmsSuccess, addFilm, addFilmSuccess, updateFilm, updateFilmSuccess } from './film.actions';
 
 
 @Injectable()
@@ -42,5 +42,23 @@ export class FilmEffects {
         tap(() => { this.router.navigate(["/"]) })
       ), { dispatch: false }
   )
+
+  updateFilm$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(updateFilm),
+      map(action => action.film),
+      mergeMap((film: Film) =>
+        this.filmService.updateFilm(film).pipe(map(film => updateFilmSuccess({ film })))
+      )
+    )
+  )
+
+  updateFilmSuccess$ = createEffect(() =>
+  this.actions$.pipe(
+    ofType(updateFilmSuccess),
+    map(action => action.film),
+    tap((film) => { this.router.navigate([`/films/${film.id}`]); })
+  ), { dispatch: false }
+)
 
 }
